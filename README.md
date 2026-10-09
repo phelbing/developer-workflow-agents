@@ -20,7 +20,7 @@ Then run `/agents` in Claude Code. The agents carry the plugin prefix, e.g. `dev
 | haiku | doc-writer, issue-triager, pr-writer |
 
 Skills:
-- `engineering-conventions`: shared rules for approach, quality, review, git, security and report format.
+- `engineering-conventions`: shared rules for approach, quality, review, git, database queries, security and report format.
 - `delegation-routing`: routing table, standard workflow (planner → task-splitter → issue-writer → issue-implementer → code review → pr-writer) and rules for handing over context.
 
 ## Structure of the conventions

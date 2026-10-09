@@ -6,9 +6,9 @@ A plugin cannot ship a `CLAUDE.md` that is loaded automatically. Copy this block
 
 ## Development
 
-- Shared rules (approach, quality, review, git, security): skill `developer-workflow-agents:engineering-conventions`.
+- Shared rules (approach, quality, review, git, database queries, security): skill `developer-workflow-agents:engineering-conventions`.
 - Delegation to subagents and standard workflow: skill `developer-workflow-agents:delegation-routing`.
-- Before every commit, a code review by the review agent of the stack plugin.
+- Code review by the review agent of the stack plugin: before every commit on the diff of that commit, before every PR on all commits of the PR.
 
 ## Project-specific (fill in)
 
