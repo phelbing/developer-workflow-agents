@@ -1,0 +1,14 @@
+{
+  "name": "developer-workflow-agents",
+  "description": "10 Subagents mit Modell-Routing (haiku/sonnet/opus) für Planung, Debugging, Refactoring, GitHub Issues, Pull Requests und Release Notes, dazu die gemeinsamen Entwicklungs-Konventionen - sprach- und stack-unabhängig",
+  "owner": {
+    "name": "Patrick"
+  },
+  "plugins": [
+    {
+      "name": "developer-workflow-agents",
+      "source": "./",
+      "description": "10 Subagents mit Modell-Routing (haiku/sonnet/opus) für Planung, Debugging, Refactoring, GitHub Issues, Pull Requests und Release Notes, dazu die gemeinsamen Entwicklungs-Konventionen - sprach- und stack-unabhängig"
+    }
+  ]
+}

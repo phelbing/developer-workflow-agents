@@ -1,0 +1,19 @@
+{
+  "name": "developer-workflow-agents",
+  "displayName": "Developer Workflow Agents",
+  "version": "1.0.0",
+  "description": "10 Subagents mit Modell-Routing (haiku/sonnet/opus) für Planung, Debugging, Refactoring, GitHub Issues, Pull Requests und Release Notes, dazu die gemeinsamen Entwicklungs-Konventionen - sprach- und stack-unabhängig",
+  "author": {
+    "name": "Patrick"
+  },
+  "license": "MIT",
+  "keywords": [
+    "workflow",
+    "planning",
+    "github",
+    "issues",
+    "pull-requests",
+    "conventions",
+    "subagents"
+  ]
+}
