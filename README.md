@@ -1,6 +1,6 @@
 # developer-workflow-agents
 
-10 subagents with model routing (haiku, sonnet, opus) for a developer's workflow: planning, debugging, refactoring, documentation, GitHub issues, pull requests and release notes. Plus the shared engineering conventions. Independent of language and stack, and the base for `php-agents`, `symfony-agents` and `react-agents` (separate repos).
+10 subagents with model routing (haiku, sonnet, opus) for a developer's workflow: planning, debugging, refactoring, documentation, GitHub issues, pull requests and release notes. Plus the shared engineering conventions. Independent of language and stack, and the base for [`php-agents`](https://github.com/phelbing/php-agents), [`symfony-agents`](https://github.com/phelbing/symfony-agents) and [`react-agents`](https://github.com/phelbing/react-agents) (separate repos).
 
 ## 1. Installation
 
@@ -42,6 +42,12 @@ A plugin does not load a `CLAUDE.md` or permissions into the project. Both are p
 1. [docs/architecture.md](docs/architecture.md): how the conventions are layered and how the agents load their skills.
 2. [docs/maintenance.md](docs/maintenance.md): validation, agent models and versions, for maintainers.
 
-## 6. License
+## 6. Related plugins
+
+1. [`php-agents`](https://github.com/phelbing/php-agents): PHP and Doctrine agents for code search, tests, review, migrations, security and performance. Builds on developer-workflow-agents.
+2. [`symfony-agents`](https://github.com/phelbing/symfony-agents): Symfony agents for implementation, tests, review and security. Builds on php-agents.
+3. [`react-agents`](https://github.com/phelbing/react-agents): React, TypeScript and Vite agents for implementation, tests, review and test runs. Builds on developer-workflow-agents.
+
+## 7. License
 
 MIT, see `LICENSE`.
