@@ -9,6 +9,8 @@ Delegate by decision complexity, not by type of task. The model is set in the fr
 
 Call agents with the plugin prefix, e.g. `developer-workflow-agents:planner`.
 
+## 1. Routing
+
 | Task | Agent |
 |---|---|
 | Unclear design, architecture, trade-offs | planner |
@@ -26,7 +28,7 @@ Standard workflow: planner → task-splitter → issue-writer → issue-implemen
 
 The code review is done by the review agent of the stack plugin, if installed (`php-agents:php-code-reviewer`, in Symfony projects `symfony-agents:symfony-code-reviewer`, in React frontends `react-agents:react-code-reviewer`).
 
-## Context when delegating
+## 2. Context when delegating
 
 Subagents do not see the chat history. Every call contains:
 
