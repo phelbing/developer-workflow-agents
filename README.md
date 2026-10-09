@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-claude plugin marketplace add <owner>/developer-workflow-agents
+claude plugin marketplace add phelbing/developer-workflow-agents
 claude plugin install developer-workflow-agents@developer-workflow-agents
 ```
 
