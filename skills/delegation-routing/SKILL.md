@@ -3,34 +3,36 @@ name: delegation-routing
 description: Use when delegating planning, debugging, refactoring, documentation, GitHub issue, pull request or release work to subagents, or when choosing which agent fits a task. Contains the routing table, the standard workflow and rules for handing over context.
 ---
 
-# Delegation (Workflow)
+# Delegation (workflow)
 
-Delegiere nach Entscheidungskomplexität, nicht nach Aufgabenart. Das Modell steht im Frontmatter des jeweiligen Agents. Gemeinsame Regeln: Skill `developer-workflow-agents:engineering-conventions`.
+Delegate by decision complexity, not by type of task. The model is set in the frontmatter of each agent. Shared rules: skill `developer-workflow-agents:engineering-conventions`.
 
-| Aufgabe | Agent |
+Call agents with the plugin prefix, e.g. `developer-workflow-agents:planner`.
+
+| Task | Agent |
 |---|---|
-| Unklares Design, Architektur, Trade-offs | planner |
-| Bug ohne erkennbare Ursache | debugger |
-| Umbau ohne Verhaltensänderung | refactorer |
-| Pläne in Aufgaben zerlegen | task-splitter |
-| Issues anlegen | issue-writer |
-| Issue bis PR umsetzen | issue-implementer |
-| Docblocks, README, Changelog | doc-writer |
-| Issues sichten, labeln | issue-triager |
-| PR-Beschreibung | pr-writer |
-| Release Notes | release-notes |
+| Unclear design, architecture, trade-offs | planner |
+| Bug without an obvious cause | debugger |
+| Restructuring without behavior change | refactorer |
+| Split plans into tasks | task-splitter |
+| Draft issues, create them on request | issue-writer |
+| Implement an issue up to the push | issue-implementer |
+| Docblocks, README, changelog | doc-writer |
+| Triage and label issues | issue-triager |
+| PR description | pr-writer |
+| Release notes | release-notes |
 
-Standardablauf: planner → task-splitter → issue-writer → issue-implementer → Code-Review → pr-writer.
+Standard workflow: planner → task-splitter → issue-writer → issue-implementer → code review → pr-writer.
 
-Das Code-Review übernimmt der Review-Agent des Stack-Plugins, falls installiert (`php-agents:php-code-reviewer`, in Symfony-Projekten `symfony-agents:symfony-code-reviewer`).
+The code review is done by the review agent of the stack plugin, if installed (`php-agents:php-code-reviewer`, in Symfony projects `symfony-agents:symfony-code-reviewer`, in React frontends `react-agents:react-code-reviewer`).
 
-## Kontext beim Delegieren
+## Context when delegating
 
-Subagents sehen den Chatverlauf nicht. Jeder Aufruf enthält:
+Subagents do not see the chat history. Every call contains:
 
-1. Ziel und Erfolgskriterium in 1-2 Sätzen
-2. Pfade, Issue-Nummern, Branch-Namen (keine kompletten Dateiinhalte)
-3. bereits getroffene Entscheidungen und Einschränkungen
-4. gewünschtes Rückgabeformat
+1. Goal and success criterion in 1-2 sentences
+2. Paths, issue numbers, branch names (no full file contents)
+3. Decisions already made and constraints
+4. Expected report format
 
-Lange Pläne als Datei (`PLAN.md`) oder Issue ablegen und nur den Verweis übergeben.
+Store long plans as a file (`PLAN.md`) or as an issue and pass only the reference.

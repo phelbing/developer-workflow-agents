@@ -1,17 +1,17 @@
-# Vorlage für die CLAUDE.md im Projekt
+# Template for the project CLAUDE.md
 
-Ein Plugin kann keine `CLAUDE.md` mitliefern, die automatisch geladen wird. Diesen Block in die eigene `CLAUDE.md` übernehmen. Er verweist nur auf die Skills und wiederholt keine Regeln, damit sie nur an einer Stelle gepflegt werden.
+A plugin cannot ship a `CLAUDE.md` that is loaded automatically. Copy this block into your own `CLAUDE.md`. It only points to the skills and does not repeat any rules, so they are maintained in one place.
 
 ---
 
-## Entwicklung
+## Development
 
-- Gemeinsame Regeln (Vorgehen, Qualität, Review, Git, Sicherheit): Skill `developer-workflow-agents:engineering-conventions`.
-- Delegation an Subagents und Standardablauf: Skill `developer-workflow-agents:delegation-routing`.
-- Vor jedem Commit ein Code-Review durch den Review-Agent des Stack-Plugins.
+- Shared rules (approach, quality, review, git, security): skill `developer-workflow-agents:engineering-conventions`.
+- Delegation to subagents and standard workflow: skill `developer-workflow-agents:delegation-routing`.
+- Before every commit, a code review by the review agent of the stack plugin.
 
-## Projektspezifisch (hier eintragen)
+## Project-specific (fill in)
 
-- Docker-Servicename: `...`
-- Testbefehl: `...`
-- Static Analysis / Code-Style: `...`
+- Docker service name: `...`
+- Test command: `...`
+- Static analysis / code style: `...`

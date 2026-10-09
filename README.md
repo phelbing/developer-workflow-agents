@@ -1,6 +1,6 @@
 # developer-workflow-agents
 
-10 Subagents mit Modell-Routing (haiku, sonnet, opus) für den Arbeitsablauf eines Entwicklers: Planung, Debugging, Refactoring, Dokumentation, GitHub Issues, Pull Requests und Release Notes. Dazu die gemeinsamen Entwicklungs-Konventionen. Sprach- und stack-unabhängig und die Basis für `php-agents` und `symfony-agents` (eigene Repos).
+10 subagents with model routing (haiku, sonnet, opus) for a developer's workflow: planning, debugging, refactoring, documentation, GitHub issues, pull requests and release notes. Plus the shared engineering conventions. Independent of language and stack, and the base for `php-agents` and `symfony-agents` (separate repos).
 
 ## Installation
 
@@ -9,54 +9,55 @@ claude plugin marketplace add <owner>/developer-workflow-agents
 claude plugin install developer-workflow-agents@developer-workflow-agents
 ```
 
-Danach in Claude Code `/agents` ausführen. Die Agents heißen mit Plugin-Präfix, z. B. `developer-workflow-agents:planner`.
+Then run `/agents` in Claude Code. The agents carry the plugin prefix, e.g. `developer-workflow-agents:planner`.
 
-## Enthalten
+## Contents
 
-| Modell | Agents |
+| Model | Agents |
 |---|---|
 | opus | planner, debugger |
-| sonnet | refactorer, task-splitter, issue-writer, issue-implementer |
-| haiku | doc-writer, issue-triager, pr-writer, release-notes |
+| sonnet | refactorer, task-splitter, issue-writer, issue-implementer, release-notes |
+| haiku | doc-writer, issue-triager, pr-writer |
 
 Skills:
-- `engineering-conventions`: gemeinsame Regeln für Vorgehen, Qualität, Review, Git, Sicherheit und Rückgabeformat.
-- `delegation-routing`: Routing-Tabelle, Standardablauf (planner → task-splitter → issue-writer → issue-implementer → Code-Review → pr-writer) und Regeln für die Kontext-Übergabe.
+- `engineering-conventions`: shared rules for approach, quality, review, git, security and report format.
+- `delegation-routing`: routing table, standard workflow (planner → task-splitter → issue-writer → issue-implementer → code review → pr-writer) and rules for handing over context.
 
-## Aufbau der Konventionen
+## Structure of the conventions
 
-Jede Regel steht genau einmal, auf der allgemeinsten Ebene, für die sie gilt. Höhere Ebenen laden die tieferen und ergänzen nur.
+Every rule exists exactly once, on the most general level it applies to. Higher levels load the lower ones and only add to them.
 
-| Ebene | Plugin | Skill |
+| Level | Plugin | Skill |
 |---|---|---|
-| Basis (alle Stacks) | developer-workflow-agents | `engineering-conventions` |
+| Base (all stacks) | developer-workflow-agents | `engineering-conventions` |
 | PHP | php-agents | `php-conventions`, `php-security-checklist`, `php-design-patterns` |
 | Symfony | symfony-agents | `symfony-conventions`, `symfony-security-checklist` |
 
-Die Agents laden ihren Skill über das Skill-Tool, der Skill lädt die Ebene darunter. Lässt sich ein Skill nicht laden, melden die Agents das in der Rückgabe.
+The agents load their skills at startup through the `skills` field in the frontmatter, including all levels below. In the main conversation, a skill loads the level below through the Skill tool. If a skill cannot be loaded, the agents say so in their report.
 
-## Empfohlene Ergänzungen im eigenen Projekt
+## Recommended additions to your project
 
-Ein Plugin lädt keine `CLAUDE.md` und keine Berechtigungen ins Projekt. Beides liegt als Vorlage unter `examples/`:
+A plugin does not load a `CLAUDE.md` or permissions into the project. Both are provided as templates under `examples/`:
 
-- `examples/CLAUDE.template.md`: Block für die eigene `CLAUDE.md`. Verweist nur auf die Skills.
-- `examples/settings.json`: Berechtigungen für `.claude/settings.json`. Erlaubt `git` und `gh` im nötigen Umfang, sperrt Force-Push, Push auf `main`/`master`, `ssh`/`scp`/`rsync` und das Lesen von `.env*`.
+- `examples/CLAUDE.template.md`: block for your own `CLAUDE.md`. Only points to the skills.
+- `examples/settings.json`: permissions for `.claude/settings.json`. Allows `git` and `gh` to the extent needed, blocks force push, push to `main`/`master`, `ssh`/`scp`/`rsync` and reading `.env*`.
 
-## Hinweise
+## Notes
 
-- `CLAUDE_CODE_SUBAGENT_MODEL` nicht setzen, sonst überschreibt die Variable die `model:`-Zeilen aller Agents.
-- Modell eines Agents ändern: Zeile `model:` im Frontmatter unter `agents/`.
-- Fremde Agents vor dem Einsatz lesen und Tool-Rechte prüfen.
-- `gh` muss angemeldet sein (`gh auth status`).
+- Do not set `CLAUDE_CODE_SUBAGENT_MODEL`, otherwise the variable overrides the `model:` lines of all agents.
+- To change an agent's model: the `model:` line in the frontmatter under `agents/`.
+- Read third-party agents before using them and check their tool permissions.
+- `gh` must be logged in (`gh auth status`).
+- The `deny` rules in `examples/settings.json` match the command as written. `git push` without a target on a checked-out `main`, `git push origin HEAD:main` or `rm -fr` are not covered. The rules guard against mistakes, they are not a hard block.
 
-## Für Maintainer
+## For maintainers
 
 ```bash
 claude plugin validate ./
 ```
 
-`version` in `.claude-plugin/plugin.json` ist gesetzt. Nutzer bleiben auf dieser Version, bis du sie erhöhst. Abhängigkeiten ohne Versionsbereich folgen dem jeweils aktuellen Stand der anderen Plugins. Für feste Versionsbereiche die Releases mit `claude plugin tag --push` taggen und die Bereiche in `dependencies` eintragen.
+`version` in `.claude-plugin/plugin.json` is set. Users stay on this version until you raise it. Dependencies without a version range follow the current state of the other plugins. For fixed version ranges, tag the releases with `claude plugin tag --push` and add the ranges to `dependencies`.
 
-## Lizenz
+## License
 
-MIT, siehe `LICENSE`.
+MIT, see `LICENSE`.
